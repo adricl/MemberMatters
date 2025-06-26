@@ -40,7 +40,7 @@ class Canvas:
             "query": 'query MyQuery {course(id: "'
             + str(course_id)
             + '") {enrollmentsConnection(first: 50, after: "'
-            + page_after
+            + (page_after or "")
             + '") {nodes {user {email}grades {finalScore}} pageInfo {hasNextPage endCursor}}}}',
         }
         logger.debug(f"Getting course details for {course_id} with: {query}")
