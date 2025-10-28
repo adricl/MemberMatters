@@ -107,7 +107,7 @@ class IssueDetail(APIView):
     post: Creates a new issue by creating a task card or emailing the management committee
     """
 
-    permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = (permissions.IsAuthenticated and (config.ENABLE_LAST_SEEN_PAGE or request.user.is_admin))
 
     def post(self, request):
         body = request.data
